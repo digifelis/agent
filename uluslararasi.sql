@@ -42,10 +42,6 @@ CREATE TABLE IF NOT EXISTS `acenta` (
 --
 -- Tablo döküm verisi `acenta`
 --
-
-INSERT INTO `acenta` (`adi`, `acenta_kullanici_adi`, `acenta_parola`, `ulke`, `sehir`, `tel1`, `tel2`, `durum`, `acenta_id`) VALUES
-('deneme acenta1', 'acenta1', '123456', 1, '', '', '', 2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -77,9 +73,7 @@ CREATE TABLE IF NOT EXISTS `bolum` (
 -- Tablo döküm verisi `bolum`
 --
 
-INSERT INTO `bolum` (`bolum_id`, `bolum_adi`, `f_id`, `bolum_durum`) VALUES
-(1, 'Bilgisayar', 1, 2),
-(2, 'Tarla Bitkileri', 2, 2);
+
 
 -- --------------------------------------------------------
 
@@ -98,8 +92,8 @@ CREATE TABLE IF NOT EXISTS `bolum_durumlari` (
 --
 
 INSERT INTO `bolum_durumlari` (`bolum_durumlari_id`, `bolum_durum_adi`) VALUES
-(1, 'Kapal?'),
-(2, 'Aç?k');
+(1, 'Kapalı'),
+(2, 'Açık');
 
 -- --------------------------------------------------------
 
@@ -142,10 +136,7 @@ CREATE TABLE IF NOT EXISTS `evraklar` (
 -- Tablo döküm verisi `evraklar`
 --
 
-INSERT INTO `evraklar` (`evrak_id`, `evrak1`, `evrak2`, `evrak3`, `evrak4`, `evrak5`, `o_id`) VALUES
-(1, 'sdfsdf', '', 'eeeeeeeeeeeeeeee', '', '', 1),
-(3, '2 için evrak', 'fffffffffffffffffffffffffffffffffffffffffff', '', '', 'dfsdddddddddddddddddddd', 2),
-(4, NULL, NULL, NULL, NULL, NULL, 4);
+
 
 -- --------------------------------------------------------
 
@@ -224,11 +215,6 @@ CREATE TABLE IF NOT EXISTS `ogrenci` (
 -- Tablo döküm verisi `ogrenci`
 --
 
-INSERT INTO `ogrenci` (`ogrenci_id`, `adi_soyadi`, `a_id`, `durum`) VALUES
-(1, 'Mansur Beştaş', 1, 2),
-(2, 'ayşe karaman', 1, 2),
-(3, 'kerem kara', 1, 2),
-(4, 'ali veli', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -269,8 +255,7 @@ CREATE TABLE IF NOT EXISTS `ogrenci_secimi` (
 -- Tablo döküm verisi `ogrenci_secimi`
 --
 
-INSERT INTO `ogrenci_secimi` (`id`, `o_id`, `f_id`, `b_id`) VALUES
-(1, 3, 2, 1);
+
 
 -- --------------------------------------------------------
 
@@ -295,8 +280,7 @@ CREATE TABLE IF NOT EXISTS `programlar` (
 -- Tablo döküm verisi `programlar`
 --
 
-INSERT INTO `programlar` (`adi`, `fiyat`, `fakulte`, `bolum`, `egit_sure`, `egit_dili`, `aciklama`, `durum`, `program_id`) VALUES
-('Bilgisayar Mühendisliği', '500', 1, 1, '4', 'Türkçe', '', 2, 1);
+
 
 -- --------------------------------------------------------
 
@@ -338,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `yonetici` (
 --
 
 INSERT INTO `yonetici` (`y_id`, `kul_adi`, `kul_pass`, `onay`) VALUES
-(1, 'admin', '123456', 2);
+(1, 'deneme', '123456', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
