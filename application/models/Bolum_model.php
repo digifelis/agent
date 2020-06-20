@@ -33,6 +33,12 @@ class Bolum_model extends CI_Model
      */
     function get_all_bolum($params = array())
     {
+            if($params['arsiv'] == 2 or $params['arsiv'] == ''){
+    		    $this->db->where('bolum_durum', 2);
+    		} else {
+    		    $this->db->where('bolum_durum', 1);
+    		}
+
         $this->db->order_by('bolum_id', 'desc');
         if(isset($params) && !empty($params))
         {

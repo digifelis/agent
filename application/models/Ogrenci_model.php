@@ -101,6 +101,7 @@ function pasaport_kontrol($ps_no) {
         $this->db->from('bolum');
 		$this->db->where('bolum_durum','2');
 		$this->db->where('f_id', $fakulte_id);
+		$this->db->where('bolum_durum', 2 );
 	//	$y_okul_id = $this->session->userdata('y_okul_id');
         return $this->db->count_all_results();
     }
@@ -194,6 +195,8 @@ function pasaport_kontrol($ps_no) {
     {
         $this->db->order_by('bolum_id', 'desc');
 		$this->db->where('f_id',$fakulte_id);
+
+        $this->db->where('bolum_durum', 2);
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);
@@ -201,7 +204,16 @@ function pasaport_kontrol($ps_no) {
 	//	$y_okul_id = $this->session->userdata('y_okul_id');
         return $this->db->get('bolum')->result_array();
     }
+    /*
+    * bolum kapalı mı bolum durumu döndürür
+    */
+    function bolum_durum($bolum_id) {
+    $this->db->where('bolum_id', $bolum_id);
+    $sonuc = $this->db->get('bolum')->result_array();
+    return $sonuc[0]['bolum_durum'];
 
+
+    }
     /* get all durumlar */
       function get_all_durumlar($params)
     {

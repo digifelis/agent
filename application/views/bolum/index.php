@@ -4,8 +4,34 @@
             <div class="box-header">
                 <h3 class="box-title">Program Listing</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('bolum/add'); ?>" class="btn btn-success btn-sm">Add</a> 
-                </div>
+                    <a href="<?php echo site_url('bolum/add'); ?>" class="btn btn-success btn-sm">Add</a>
+                 </div>
+
+                <div class="">
+
+                <?php
+                                                    if ($this->input->get('arsiv') == "" or $this->input->get('arsiv') == 2) {
+
+                                                    ?>
+
+                                                    	<form name="arama" action="" method="get">
+                                                    	<input type="hidden" name="arsiv" value="1">
+                                                    	  <input type="submit" value="Sadece Arşivleri getir" class="btn btn-success btn-sm">
+                                                    	</form>
+
+                                                    <?php } else {
+                                                    	?>
+
+                                                    	<form name="arama" action="" method="get">
+                                                    	<input type="hidden" name="arsiv" value="2">
+                                                    	  <input type="submit" value="Aktif kayıtları getir" class="btn btn-success btn-sm">
+                                                    	</form>
+
+                                             <?php } ?>
+                 </div>
+
+
+
             </div>
             <div class="box-body">
                 <table class="table table-striped">

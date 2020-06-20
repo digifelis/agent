@@ -19,6 +19,8 @@ class Bolum extends CI_Controller{
     function index()
     {
 		if($this->yetki<3) {
+
+		$params['arsiv'] = $this->input->get('arsiv');
         $params['limit'] = RECORDS_PER_PAGE; 
         $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
         

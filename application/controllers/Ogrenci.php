@@ -625,6 +625,7 @@ function seviye_sec()
 	
 		function bolum_sec()
 	{
+
 		if($this->Ogrenci_model->yetki_kontrol($this->uri->segment("3") , $this->y_okul_id , $this->yetki) == 1) {
 		
 			$params['limit'] = RECORDS_PER_PAGE; 
@@ -651,8 +652,9 @@ function seviye_sec()
      * Adding a new tercih
      */
     function tercih_yap()
-    {   
-		if($this->Ogrenci_model->yetki_kontrol($this->uri->segment("3") , $this->y_okul_id, $this->yetki) == 1) {
+    {
+        $bolum_durum = $this->Ogrenci_model->bolum_durum($this->uri->segment("5"));
+		if($this->Ogrenci_model->yetki_kontrol($this->uri->segment("3") , $this->y_okul_id, $this->yetki) == 1 and $bolum_durum == 2) {
 			
 			$tercih_varmi = $this->Ogrenci_model->tercih_kontrol($this->uri->segment("3"));
 			
