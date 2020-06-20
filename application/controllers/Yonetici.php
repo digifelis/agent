@@ -52,6 +52,7 @@ class Yonetici extends CI_Controller{
 				'yetki' => $this->input->post('yetki'),
 				'y_okul_id' => $this->input->post('y_okul_id'),
 				'yetkili' => $this->input->post('yetkili'),
+				'kul_email' => $this->input->post('kul_email'),
             );
             
             $yonetici_id = $this->Yonetici_model->add_yonetici($params);
@@ -95,6 +96,7 @@ class Yonetici extends CI_Controller{
 					'yetki' => $this->input->post('yetki'),
 					'y_okul_id' => $this->input->post('y_okul_id'),
 					'yetkili' => $this->input->post('yetkili'),
+					'kul_email' => $this->input->post('kul_email'),
 					
 					
                 );
