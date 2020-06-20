@@ -24,13 +24,19 @@ class Ogrenci extends CI_Controller{
     function index()
     {
 
-			$this->kelime = $this->input->get('kelime');
-			$this->kriter = $this->input->get('kriter');
+		$this->kelime = $this->input->get('kelime');
+		$this->kriter = $this->input->get('kriter');
+		if($this->input->get('arsiv') == "" or $this->input->get('arsiv') == "0") {
+			$params['arsiv'] = 0;
+		} else {
+			$params['arsiv'] = 1;
+		}
+		
 
-			$params['kriter'] = $this->kriter;
-			$params['kelime'] = $this->kelime;
+		$params['kriter'] = $this->kriter;
+		$params['kelime'] = $this->kelime;
 
-			$data['kelime'] = $this->kelime;
+		$data['kelime'] = $this->kelime;
 			
         $params['limit'] = RECORDS_PER_PAGE; 
         $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
@@ -689,5 +695,30 @@ function seviye_sec()
 		
 	} else { show_error('You can not do the operation for this student.');}
 	}
+	
+	
+	    function arsiv_yap()
+    {   
+	//$this->load->model('Ulkeler_model');
+		if($this->yetki<3) {
+				// check if the ogrenci exists before trying to edit it
+				$ogrenci_id = $this->uri->segment("3");
+				$data['ogrenci'] = $this->Ogrenci_model->get_ogrenci($ogrenci_id);
+				
+				if(isset($data['ogrenci']['ogrenci_id']))
+				{
+					if($data['ogrenci']['arsiv'] == 1){ $yeni_hal = 0;}
+					if($data['ogrenci']['arsiv'] == 0){ $yeni_hal = 1;}
+					$params = array(
+					'arsiv' => $yeni_hal
+					);
+					$this->Ogrenci_model->update_ogrenci($ogrenci_id,$params); 
+					redirect($_SERVER['HTTP_REFERER']);	
+				}
+				else
+					show_error('The Student you are trying to edit does not exist.');
+		} else { 		show_error('You must have administrator permission.');			}
+    } 
+	
     
 }

@@ -42,11 +42,36 @@ if($yetki == 3) { ?>
 <?php } else { ?>
 <a href="<?php echo site_url('ogrenci/add'); ?>" class="btn btn-success btn-sm">Add</a> 
 <?php } ?>
-				  
+
+
+<?php
+if ($this->input->get('arsiv') == "" or $this->input->get('arsiv') == 0) {
+
+?>
+<div class="box-tools">
+	<form name="arama" action="" method="get">
+	<input type="hidden" name="arsiv" value="1">	  
+	  <input type="submit" value="Sadece Arşivleri getir">
+	</form>
+</div>
+<?php } else {
+	?>
+<div class="box-tools">
+	<form name="arama" action="" method="get">
+	<input type="hidden" name="arsiv" value="0">	  
+	  <input type="submit" value="Aktif kayıtları getir">
+	</form>
+</div>	
+<?php } ?>
+
+
+	  
                 </div>
+
 				
 <form name="arama" action="" method="get">
 <input type="text" name="kelime" value="<?php echo $kelime; ?>" >
+<input type="hidden" name="arsiv" value="<?php echo $this->input->get('arsiv'); ?>">	  
 
  <select name="kriter" >
     <option value="adi_soyadi" >Name Surname</option>
@@ -57,6 +82,9 @@ if($yetki == 3) { ?>
   
   
 </form>
+
+
+
 				
 				
             </div>
@@ -160,8 +188,12 @@ if($o['durum'] == 3)
    <a href="<?php echo site_url('ogrenci/onaya_yolla/'.$o['ogrenci_id']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-warning"></span> Sent for Approval</a> 
 <?php } ?> 
 
- <a href="<?php echo site_url('ogrenci/surec_bilgisi/'.$o['ogrenci_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-flag-o"></span> Status Info</a>                           
-                        
+ <a href="<?php echo site_url('ogrenci/surec_bilgisi/'.$o['ogrenci_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-flag-o"></span> Status Info</a>       
+ 
+ <?php if($yetki < 3) { ?>
+<a href="<?php echo site_url('ogrenci/arsiv_yap/'.$o['ogrenci_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> <?php if ($o['arsiv']==0) { echo "Sent To Archive";} else { echo "Sent To Active";} ?></a>
+                           
+<?php } ?>                       
 
                    
 						</td>

@@ -11,7 +11,7 @@ class Ogrenci_model extends CI_Model
         parent::__construct();
 		$this->tableName = 'files';
 		$this->y_okul_id = $this->session->userdata('y_okul_id');
-		$this->zaman = date('Y-m-d H:i:s'); 
+		$this->zaman = date('Y-m-d H:i:s');
     }
 
 	function yetki_kontrol($ogrenci , $ajans , $yetki) {
@@ -141,6 +141,7 @@ function pasaport_kontrol($ps_no) {
 			if($params['kelime'] != "") {$this->db->like($params['kriter'], $params['kelime'] , 'both');}
         }
 	//	$y_okul_id = $this->session->userdata('y_okul_id');
+		$this->db->where('arsiv' , $params['arsiv']);
 		if($this->y_okul_id != 0) { $this->db->where('a_id' , $this->y_okul_id);}
 		
         return $this->db->get('ogrenci')->result_array();
