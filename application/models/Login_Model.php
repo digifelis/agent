@@ -64,7 +64,7 @@ class Login_Model extends CI_Model
                        $config['protocol'] = 'smtp';
                        $config['smtp_host'] = 'ssl://smtp.gmail.com';
                        $config['smtp_user'] = 'siuzem@siirt.edu.tr';
-                       $config['smtp_pass'] = 'szm.12345';
+                       $config['smtp_pass'] = 'qazwsx';
                        $config['smtp_port'] = 465;
                        $config['charset']    = 'utf-8';
                        $this->email->initialize($config);
