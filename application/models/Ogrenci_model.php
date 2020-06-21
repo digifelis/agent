@@ -66,7 +66,7 @@ function pasaport_kontrol($ps_no) {
     /*
      * Get all ogrenci count
      */
-    function get_all_ogrenci_count()
+    function get_all_ogrenci_count($params = array())
     {
 		
         $this->db->from('ogrenci');
@@ -75,7 +75,7 @@ function pasaport_kontrol($ps_no) {
         {
 			if($params['kelime'] != "") {$this->db->like($params['kriter'], $params['kelime'] , 'both');}
         }
-		
+		$this->db->where('arsiv' , $params['arsiv']);
 		if($this->y_okul_id != 0) { $this->db->where('a_id' , $this->y_okul_id);}
         return $this->db->count_all_results();
     }

@@ -14,6 +14,7 @@
 						<th>Status</th>
 						<th>User Name</th>
 						<th>Authorized Name</th>
+						<th>Email</th>
 						<th>Actions</th>
                     </tr>
                     <?php foreach($yonetici as $y){ ?>
@@ -27,6 +28,7 @@
 						<td><?php echo /*$y['onay'] ."--". */$durum_adi[0]['durum_adi']; ?></td>
 						<td><?php echo $y['kul_adi']; ?></td>
 						<td><?php echo $y['yetkili']; ?></td>
+						<td><?php echo $y['kul_email']; ?></td>
 						<td>
                             <a href="<?php echo site_url('yonetici/edit/'.$y['y_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
                         <!--    <a href="<?php echo site_url('yonetici/remove/'.$y['y_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a> -->

@@ -98,6 +98,15 @@
 							<span class="text-danger"><?php echo form_error('kul_pass');?></span>
 						</div>
 					</div>
+
+					<div class="col-md-6">
+                        <label for="kul_email" class="control-label"><span class="text-danger">*</span>User Email</label>
+                        <div class="form-group">
+                            <input type="text" name="kul_email" value="<?php echo ($this->input->post('kul_email') ? $this->input->post('kul_email') : $yonetici['kul_email']); ?>" class="form-control" id="kul_email" />
+                            <span class="text-danger"><?php echo form_error('kul_email');?></span>
+                        </div>
+                    </div>
+
 				</div>
 			</div>
 			<div class="box-footer">
