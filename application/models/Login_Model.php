@@ -27,6 +27,16 @@ class Login_Model extends CI_Model
         }
   }
 
+  function loginControl_count($username, $password)
+  {
+          $this->db->where('kul_adi',$username);
+          $this->db->where('kul_pass',$password);
+          $this->db->where('onay','2');
+          $query = $this->db->get('yonetici');
+          $sonuc = $query->row();
+          return $query->num_rows();
+  }
+
 
 
   //funtion to get email of user to send password

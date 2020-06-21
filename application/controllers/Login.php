@@ -37,8 +37,8 @@ class Login extends CI_Controller
         $password = $this->input->post('password');
 
         $result = $this->Login_Model->loginControl($username,$password);
-		
-        if (count($result) > 0 ) {
+		$varmi = $this->Login_Model->loginControl_count($username, $password);
+        if ($varmi > 0 ) {
 					  /*
 		  echo "conroller icerisi : ";
 		  print_r($result);
