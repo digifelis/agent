@@ -73,6 +73,27 @@ class Login extends CI_Controller
       }
     }
   }
+
+    /*
+    Forgotpassword email sender:
+    No view
+    */
+  public function ForgotPassword()
+     {
+           $email = $this->input->post('email');
+           $findemail = $this->Login_Model->ForgotPassword($email);
+           if($findemail){
+            $this->Login_Model->sendpassword($findemail);
+             }else{
+            $this->session->set_flashdata('msg',' Email not found!');
+            redirect(base_url().'login','refresh');
+        }
+     }
+
+
+
+
+
 }
 
  ?>
